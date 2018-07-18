@@ -174,10 +174,11 @@ if(c!=2&&c!=4)
 if(c==2&&strcmp(arg1,action1)==0)
    {	getpub(arg2);
 	int m=(int)(sizeof(key)/sizeof(*key));
-	write(conn, str[m], sizeof(str[m]));
+	write(conn, str[m-1], sizeof(str[m-1]));
    }
 if(c==4&&strcmp(arg1,action2)==0)
-{
+{	
+	getpub(arg2);
 	sign(arg2,arg3,arg4);
 
 	ECDSA_SIG *signature = ECDSA_SIG_new();
